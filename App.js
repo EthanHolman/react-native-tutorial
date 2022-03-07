@@ -11,13 +11,16 @@ import React from 'react';
 import {SafeAreaView} from 'react-native';
 import AppNavContainer from './src/navigation';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import GlobalProvider from './src/context/Provider';
 // import AppNavContainer from './src/navigation';
 
 const App = () => {
   return (
     // <GestureHandlerRootView> // leaving this here, because it might be what fixed error and too lazy to rebuild whole app
     // <SafeAreaView>
-    <AppNavContainer />
+    <GlobalProvider>
+      <AppNavContainer />
+    </GlobalProvider>
     // </SafeAreaView>
     // </GestureHandlerRootView>
   );

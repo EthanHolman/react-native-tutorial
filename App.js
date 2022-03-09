@@ -9,7 +9,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import AppNavContainer from './src/navigation';
+import AppNavContainer from './src/navigation/AppNavContainer';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import GlobalProvider from './src/context/Provider';
 // import AppNavContainer from './src/navigation';

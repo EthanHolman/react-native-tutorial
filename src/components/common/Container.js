@@ -1,6 +1,11 @@
 import React from 'react';
-import {View, ScrollView, Text} from 'react-native';
-import styles from './styles';
+import {View, ScrollView, Text, StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
+  wrapper: {
+    padding: 20,
+  },
+});
 
 const Container = ({style, children}) => {
   return (

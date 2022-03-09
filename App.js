@@ -11,7 +11,7 @@ import React from 'react';
 import {SafeAreaView} from 'react-native';
 import AppNavContainer from './src/navigation/AppNavContainer';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import GlobalProvider from './src/context/Provider';
+import GlobalProvider from './src/context/GlobalContext';
 // import AppNavContainer from './src/navigation';
 
 const App = () => {

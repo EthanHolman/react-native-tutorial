@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import DrawerNavigator from './DrawerNavigator';
 import AuthNavigator from './AuthNavigator';
-import {GlobalContext} from '../context/Provider';
+import {GlobalContext} from '../context/GlobalContext';
 
 const AppNavContainer = () => {
   const {

@@ -6,6 +6,7 @@ import {
   REGISTER_FAIL,
   REGISTER_LOADING,
   REGISTER_SUCCESS,
+  LOGOUT_USER,
 } from '../../constants/actionTypes';
 
 const auth = (state, {type, payload}) => {
@@ -27,6 +28,13 @@ const auth = (state, {type, payload}) => {
         loading: false,
         data: null,
         error: null,
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        loading: false,
+        isLoggedIn: false,
+        data: null,
       };
     default:
       return state;

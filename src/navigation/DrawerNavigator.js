@@ -16,6 +16,9 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       drawerType="slide"
+      screenOptions={{
+        headerShown: false,
+      }}
       drawerContent={({navigation}) =>
         getDrawerContent(navigation, authDispatch)
       }>

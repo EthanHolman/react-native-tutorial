@@ -11,6 +11,7 @@ import {
 import {SETTINGS} from '../constants/routeNames';
 import {Alert} from 'react-native';
 import logoutUser from '../context/actions/auth/logoutUser';
+import Icon from '../components/common/Icon';
 
 const styles = StyleSheet.create({
   logoImage: {
@@ -47,11 +48,15 @@ const SideMenu = ({navigation, authDispatch}) => {
 
   const menuItems = [
     {
-      icon: <Text>T</Text>,
+      icon: <Icon type="fontisto" name="player-settings" size={17} />,
       name: 'Settings',
       onPress: () => navigation.navigate(SETTINGS),
     },
-    {icon: <Text>T</Text>, name: 'Logout', onPress: handleLogout},
+    {
+      icon: <Icon type="material" name="logout" size={17} />,
+      name: 'Logout',
+      onPress: handleLogout,
+    },
   ];
 
   return (

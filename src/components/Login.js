@@ -44,7 +44,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginComponent = ({onSubmit, error, onChange, loading}) => {
+const LoginComponent = ({
+  onSubmit,
+  error,
+  onChange,
+  loading,
+  form,
+  justSignedUp,
+}) => {
   const {navigate} = useNavigation();
   const [isSecureEntry, setIsSecureEntry] = React.useState(true);
 
@@ -69,10 +76,18 @@ const LoginComponent = ({onSubmit, error, onChange, loading}) => {
         )}
 
         <View style={styles.form}>
+          {justSignedUp && (
+            <Message
+              onDismiss={() => {}}
+              success
+              message="Account created successfully!"
+            />
+          )}
           <Input
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
+            value={form.userName || null}
             onChangeText={value => onChange({name: 'userName', value})}
           />
           <Input

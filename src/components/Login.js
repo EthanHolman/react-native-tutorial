@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
 
 const LoginComponent = ({onSubmit, error, onChange, loading}) => {
   const {navigate} = useNavigation();
+  const [isSecureEntry, setIsSecureEntry] = React.useState(true);
+
   return (
     <Container>
       <Image
@@ -75,10 +77,16 @@ const LoginComponent = ({onSubmit, error, onChange, loading}) => {
           />
           <Input
             label="Password"
-            icon={<Text>HIDE</Text>}
+            icon={
+              <TouchableOpacity
+                onPress={() => setIsSecureEntry(!isSecureEntry)}>
+                {isSecureEntry && <Text>SHOW</Text>}
+                {!isSecureEntry && <Text>HIDE</Text>}
+              </TouchableOpacity>
+            }
             iconPosition="right"
             placeholder="Enter Password"
-            secureTextEntry
+            secureTextEntry={isSecureEntry}
             onChangeText={value => onChange({name: 'password', value})}
           />
           <CustomButton

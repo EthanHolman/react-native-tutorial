@@ -53,6 +53,7 @@ const RegisterComponent = ({
   loading,
 }) => {
   const {navigate} = useNavigation();
+  const [isSecureEntry, setIsSecureEntry] = React.useState(true);
 
   return (
     <Container>
@@ -104,10 +105,16 @@ const RegisterComponent = ({
           />
           <Input
             label="Password"
-            icon={<Text>HIDE</Text>}
+            icon={
+              <TouchableOpacity
+                onPress={() => setIsSecureEntry(!isSecureEntry)}>
+                {isSecureEntry && <Text>SHOW</Text>}
+                {!isSecureEntry && <Text>HIDE</Text>}
+              </TouchableOpacity>
+            }
             iconPosition="right"
             placeholder="Enter Password"
-            secureTextEntry
+            secureTextEntry={isSecureEntry}
             onChangeText={value => onChange({name: 'password', value})}
             error={errors.password || error?.password?.[0]}
           />

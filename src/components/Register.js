@@ -7,6 +7,7 @@ import Container from './common/Container';
 import CustomButton from './common/CustomButton';
 import Input from './common/Input';
 import {REGISTER} from '../constants/routeNames';
+import Message from '../components/common/Message';
 
 const styles = StyleSheet.create({
   logoImage: {
@@ -65,7 +66,14 @@ const RegisterComponent = ({
         <Text style={styles.title}>Welcome to RNContacts</Text>
         <Text style={styles.subTitle}>Please create a free account:</Text>
         <View style={styles.form}>
-          {error && <Text>{error?.toString()}</Text>}
+          {error && (
+            <Message
+              retry
+              retryFn={() => console.log('hello world')}
+              danger
+              message={`Err: ${error}`}
+            />
+          )}
           <Input
             label="Username"
             iconPosition="right"

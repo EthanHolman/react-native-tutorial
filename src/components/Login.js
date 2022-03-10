@@ -7,6 +7,7 @@ import Container from '../components/common/Container';
 import CustomButton from '../components/common/CustomButton';
 import Input from '../components/common/Input';
 import {REGISTER} from '../constants/routeNames';
+import Message from './common/Message';
 
 const styles = StyleSheet.create({
   logoImage: {
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginComponent = () => {
+const LoginComponent = ({onSubmit, error, onChange, loading}) => {
   const {navigate} = useNavigation();
   return (
     <Container>
@@ -56,11 +57,21 @@ const LoginComponent = () => {
       <View>
         <Text style={styles.title}>Welcome to RNContacts</Text>
         <Text style={styles.subTitle}>Please Login Here:</Text>
+
+        {error && !error.error && (
+          <Message
+            danger
+            message={`Err: ${error.error}`}
+            onDismiss={() => {}}
+          />
+        )}
+
         <View style={styles.form}>
           <Input
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
+            onChangeText={value => onChange({name: 'userName', value})}
           />
           <Input
             label="Password"
@@ -68,8 +79,15 @@ const LoginComponent = () => {
             iconPosition="right"
             placeholder="Enter Password"
             secureTextEntry
+            onChangeText={value => onChange({name: 'password', value})}
           />
-          <CustomButton primary title="Submit" loading={false} />
+          <CustomButton
+            primary
+            title="Submit"
+            loading={loading}
+            onPress={onSubmit}
+            disabled={loading}
+          />
           <View style={styles.createSection}>
             <Text style={styles.infoText}>Need an account?</Text>
             <TouchableOpacity onPress={() => navigate(REGISTER)}>

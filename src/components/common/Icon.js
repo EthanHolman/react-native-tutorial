@@ -27,8 +27,6 @@ const getIconFont = type => {
       return SimpleLineIcons;
     case 'fa5':
       return FAIcon5;
-    case 'fa':
-      return FAIcon;
     case 'entypo':
       return EntypoIcon;
     case 'evilIcons':
@@ -45,8 +43,9 @@ const getIconFont = type => {
       return OcticonIcon;
     case 'zocial':
       return ZocialIcon;
+    // default to fontawesome classic
     default:
-      return null;
+      return FAIcon;
   }
 };
 

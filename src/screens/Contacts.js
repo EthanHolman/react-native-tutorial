@@ -9,7 +9,6 @@ import getContacts from '../context/actions/contacts/getContacts';
 
 const Contacts = () => {
   const [modalVisible, setModalVisible] = React.useState(false);
-  // const [] = React.useState(false);
   const {setOptions, toggleDrawer} = useNavigation();
 
   const {

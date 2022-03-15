@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import colors from '../../assets/theme/colors';
 import Icon from './Icon';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -50,16 +51,23 @@ const AppModal = ({
   title,
   modalBody,
   modalFooter,
+  closeOnTouchOutside,
 }) => {
   return (
     <Modal visible={modalVisible} transparent>
       <TouchableOpacity
-        onPress={() => setModalVisible(false)}
+        onPress={() => {
+          if (closeOnTouchOutside) {
+            setModalVisible(false);
+          }
+        }}
         style={styles.wrapper}>
         <View style={styles.modalView}>
           <ScrollView>
             <View style={styles.header}>
-              <Icon size={27} type="evilIcons" name="close" />
+              <TouchableOpacity onPress={() => setModalVisible(false)}>
+                <Icon size={27} type="evilIcons" name="close" />
+              </TouchableOpacity>
               <Text>{title || 'RNContacts'}</Text>
             </View>
             <View style={styles.body}>{modalBody}</View>
@@ -74,6 +82,14 @@ const AppModal = ({
       </TouchableOpacity>
     </Modal>
   );
+};
+
+AppModal.propTypes = {
+  closeOnTouchOutside: PropTypes.bool,
+};
+
+AppModal.defaultProps = {
+  closeOnTouchOutside: true,
 };
 
 export default AppModal;

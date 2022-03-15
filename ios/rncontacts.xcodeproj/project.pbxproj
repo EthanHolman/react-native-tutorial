@@ -114,7 +114,6 @@
 				7EA0BA2EBF945A6F3C0BEFFC /* Pods-rncontacts-rncontactsTests.debug.xcconfig */,
 				87CA2B4BFDF1CF53D4002B82 /* Pods-rncontacts-rncontactsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -485,6 +484,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UJ445HDY43;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = rncontacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -511,6 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UJ445HDY43;
 				INFOPLIST_FILE = rncontacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

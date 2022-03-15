@@ -1,11 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Switch} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Switch,
+  TouchableOpacity,
+} from 'react-native';
 import colors from '../assets/theme/colors';
 import Container from './common/Container';
 import Input from './common/Input';
 import CustomButton from './common/CustomButton';
 import CountryPicker from 'react-native-country-picker-modal';
 import {DEFAULT_IMAGE_URI} from '../constants/general';
+import PicturePicker from './common/PicturePicker';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,12 +40,18 @@ const CreateContactComponent = ({
   error,
   loading,
   toggleValueChange,
+  sheetRef,
+  openSheet,
+  closeSheet,
+  onFileSelected,
 }) => {
   return (
     <View style={styles.container}>
       <Container>
         <Image source={{uri: DEFAULT_IMAGE_URI}} style={styles.imageView} />
-        <Text style={styles.chooseText}>Choose image</Text>
+        <TouchableOpacity onPress={openSheet}>
+          <Text style={styles.chooseText}>Choose image</Text>
+        </TouchableOpacity>
         <Input
           label="First Name"
           placeholder="Enter First Name"
@@ -106,6 +120,7 @@ const CreateContactComponent = ({
           onPress={onSubmit}
         />
       </Container>
+      <PicturePicker ref={sheetRef} onFileSelected={onFileSelected} />
     </View>
   );
 };

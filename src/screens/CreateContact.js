@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useContext} from 'react';
+import React, {useContext, useRef} from 'react';
 import CreateContactComponent from '../components/CreateContact';
 import createContacts from '../context/actions/contacts/createContacts';
 import {GlobalContext} from '../context/GlobalContext';
@@ -12,8 +12,17 @@ const CreateContact = () => {
       createContacts: {loading, error},
     },
   } = useContext(GlobalContext);
+  const sheetRef = useRef(null);
   const [form, setForm] = React.useState({});
   const {navigate} = useNavigation();
+
+  const closeSheet = () => {
+    if (sheetRef.current) sheetRef.current.close();
+  };
+
+  const openSheet = () => {
+    if (sheetRef.current) sheetRef.current.open();
+  };
 
   const onChangeText = ({name, value}) => {
     setForm({...form, [name]: value});
@@ -21,6 +30,11 @@ const CreateContact = () => {
 
   const toggleValueChange = () => {
     setForm({...form, isFavorite: !form.isFavorite});
+  };
+
+  const onFileSelected = images => {
+    closeSheet();
+    console.log(images);
   };
 
   const onSubmit = () => {
@@ -39,6 +53,10 @@ const CreateContact = () => {
         loading,
         error,
         toggleValueChange,
+        closeSheet,
+        openSheet,
+        sheetRef,
+        onFileSelected,
       }}
     />
   );

@@ -25,7 +25,20 @@ const PicturePicker = React.forwardRef(({onFileSelected}, ref) => {
     {
       name: 'Take a Photo',
       icon: <Icon color={colors.grey} size={21} name="camera" />,
-      onPress: () => {},
+      onPress: () => {
+        ImagePicker.openCamera({
+          width: 300,
+          height: 300,
+          cropping: true,
+          freeStyleCropEnabled: true,
+        })
+          .then(images => {
+            onFileSelected(images);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      },
     },
     {
       name: 'Choose from gallery',

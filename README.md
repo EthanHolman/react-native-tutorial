@@ -13,3 +13,9 @@ I don't have a machine with android studio setup yet. THese are some things that
 
 - react native vector icons (follow setup instructions)
 - react-native-image-crop-picker
+
+## Notes
+
+change name of app:
+strings.xml (for android)
+info.plist (ios)

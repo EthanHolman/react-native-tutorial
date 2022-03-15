@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useContext, useRef} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import CreateContactComponent from '../components/CreateContact';
 import createContacts from '../context/actions/contacts/createContacts';
 import {GlobalContext} from '../context/GlobalContext';
@@ -15,6 +15,7 @@ const CreateContact = () => {
   const sheetRef = useRef(null);
   const [form, setForm] = React.useState({});
   const {navigate} = useNavigation();
+  const [localFile, setLocalFile] = useState(null);
 
   const closeSheet = () => {
     if (sheetRef.current) sheetRef.current.close();
@@ -34,6 +35,7 @@ const CreateContact = () => {
 
   const onFileSelected = images => {
     closeSheet();
+    setLocalFile(images);
     console.log(images);
   };
 
@@ -57,6 +59,7 @@ const CreateContact = () => {
         openSheet,
         sheetRef,
         onFileSelected,
+        localFile,
       }}
     />
   );

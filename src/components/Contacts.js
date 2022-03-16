@@ -66,7 +66,13 @@ const ListEmptyComponent = () => {
   );
 };
 
-const ContactsComponent = ({modalVisible, data, loading, setModalVisible}) => {
+const ContactsComponent = ({
+  modalVisible,
+  data,
+  loading,
+  setModalVisible,
+  sortBy,
+}) => {
   const {navigate} = useNavigation();
 
   const renderItem = ({item}) => (
@@ -119,7 +125,27 @@ const ContactsComponent = ({modalVisible, data, loading, setModalVisible}) => {
         {!loading && (
           <View style={[{paddingVertical: 20}]}>
             <FlatList
-              data={data}
+              data={
+                sortBy
+                  ? data.sort((a, b) => {
+                      if (sortBy === 'First Name') {
+                        if (
+                          b.first_name.toLowerCase() >
+                          a.first_name.toLowerCase()
+                        )
+                          return -1;
+                        else return 1;
+                      }
+                      if (sortBy === 'Last Name') {
+                        if (
+                          b.last_name.toLowerCase() > a.last_name.toLowerCase()
+                        )
+                          return -1;
+                        else return 1;
+                      }
+                    })
+                  : data
+              }
               ListEmptyComponent={ListEmptyComponent}
               renderItem={renderItem}
               keyExtractor={item => String(item.id)}
